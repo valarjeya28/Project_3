@@ -1,88 +1,60 @@
-# import necessary libraries
-from sqlalchemy import func
-
-from flask import (
-    Flask,
-    render_template,
-    jsonify,
-    request,
-    redirect)
 import os
-from flask_sqlalchemy import SQLAlchemy
 
+import pandas as pd
+import numpy as np
+import json
+from flask import Flask
+from flask import Flask, request, render_template
+from flask import Flask, jsonify, render_template
+from flask_pymongo import PyMongo
 
+#################################################
+# Database Setup
+#################################################
 app = Flask(__name__)
-
-# @TODO: Setup your database here
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db/pets.sqlite"
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
-
-db = SQLAlchemy(app)
-class Pet(db.Model):
-    __tablename__ = 'pets'
-
-    id = db.Column(db.Integer, primary_key=True)
-    ticker = db.Column(db.String(64))
-    calendardate = db.Column(db.String(64))
-    age = db.Column(db.)
-
-    def __repr__(self):
-        return '<Pet %r>' % (self.name)
+app.config["MONGO_URI"] = "mongodb://localhost:27017/company_db"
+mongo = PyMongo(app)
 
 @app.route("/")
-def home():
+def index():
+    """Return the homepage."""
     return render_template("index.html")
 
+@app.route('/ticker', methods=['GET'])
+def get_all_ticker():
+  company = mongo.db.company
+  ticker=[]
+  for testy in company.find().distinct('ticker'):
+     ticker.append(testy)
+  print(ticker)
+  return jsonify(ticker) 
 
-# @TODO: Create a route "/send" that handles both GET and POST requests
-# If the request method is POST, save the form data to the database
-# Otherwise, return "form.html"
-
-@app.route("/send", methods=["GET", "POST"])
-def send():
-    if request.method == "POST":
-        name = request.form["petName"]
-        pettype = request.form["petType"]
-        petage = request.form["petAge"]
-        print(name)
-        pet = Pet(name=name, type=pettype, age=petage)
-        db.session.add(pet)
-        db.session.commit()
-        return redirect("/", code=302)
-
-    return render_template("form.html")
-
-# @TODO: Create an API route "/api/pals" to return data to plot
-@app.route("/api/pals")
-def pals():
-    results = db.session.query(Pet.name, Pet.type, Pet.age).all()
-
-    hover_text = [result[0] for result in results]
-    pettype = [result[1] for result in results]
-    petage = [result[2] for result in results]
-
-    pet_data = [{
-        "type": pettype,
-        "age":petage,
-        "text": hover_text,
-        "hoverinfo": "text",
-        "marker": {
-            "size": 50,
-            "line": {
-                "color": "rgb(8,8,8)",
-                "width": 1
-            },
-        }
-    }]
-
-    return jsonify(pet_data)
-
-   
-
-   
-
+@app.route("/metadata/<ticker>", methods=['GET'])
+def companydata(ticker):
+    """Return the MetaData for a given sample."""
+    # sample_metadata = {}
+    company = mongo.db.company
+    tickerdata=[]
+    for data in company.find({"ticker": ticker}, {'_id':0}):
+        tickerdata.append(data)
+    print(tickerdata)
+    return jsonify(results = tickerdata)
+    
+@app.route("/ticker/<ticker>", methods=['GET'])
+def samples(ticker):
+    """Return `price`, `calenderdate`,and `ticker values`."""
+    
+    # Filter the data based on the ticker and
+    # only keep rows with values above 1
+    company = mongo.db.company
+    tickerdata2=[]
+    for test in company.find({"ticker": ticker}, {'_id':0, "price": 1, "calendardate": 1,}):
+     tickerdata2.append(test)
+    
+    return jsonify(tickerdata2)
     
 
-if __name__ == "__main__":
-    app.run()
 
+if __name__ == "__main__":
+    
+    app.run()
