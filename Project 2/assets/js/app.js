@@ -77,7 +77,9 @@ function updateToolTip(chosenXAxis, circlesGroup) {
     .attr("class", "tooltip")
     .offset([80, -60])
     .html(function(d) {
-      return (`${d.ticker}<br>${label} ${d[chosenXAxis]}`);
+      return (`${d.name}<br>
+      ${label} ${d[chosenXAxis]}
+      <br>P/E Ratio ${d.pe}`);
     });
 
   circlesGroup.call(toolTip);
@@ -95,15 +97,15 @@ function updateToolTip(chosenXAxis, circlesGroup) {
 }
 
  // retrieve the data from the csv
-d3.csv("/assets/data/company_data3.csv").then(function(companyData) {
+d3.csv("/assets/data/company_data4.csv").then(function(companyData) {
     // if (err) throw err;
     console.log('HERE!!!', companyData);
 
     // parse the data
     companyData.forEach(function(data) {
-        data.de = +data.de;
+        data.dez = +data.de;
         data.pe = +data.pe;
-        data.assetturnover = +data.assetturnover;
+        data.assetturnover = +data.assetturnover
     });
 
     // var chosenXAxis = "assetturnover";

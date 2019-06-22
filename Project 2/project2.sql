@@ -34,10 +34,15 @@ select * from ticker limit 5;
 select * from company where calendardate = "2018-12-31"
 AND ticker in("XOM", "V", "UTX","GE","WMT","NKE","KO","IBM","DIS","DD");
 
-select * from company
+select * from company;
 
 select * from company a
 join ticker b
-on a.ticker=b.ticker;
+on a.ticker=b.ticker
+where sicsector = "Manufacturing"
+AND a.ticker <> "CSCO"
+and a.ticker <> "NKE"
+and a.ticker <> "BA"
+AND calendardate = "2018-12-31";
 
 select distinct ticker from ticker;

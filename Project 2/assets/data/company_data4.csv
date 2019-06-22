@@ -1,0 +1,14 @@
+ticker,calendardate,assetturnover,currentratio,de,epsusd,grossmargin,netmargin,pe,price,ticker,name,category,sicsector,currency,location,sector
+PG,2018-12-31,0.54,0.83,1.24,3.75,0.487,0.146,20.1,78.06,PG,"PROCTER & GAMBLE Co",Domestic,Manufacturing,USD,"Ohio U.S.A","Consumer Defensive"
+PFE,2018-12-31,0.33,1.57,1.51,1.90,0.790,0.208,22.6,43.65,PFE,"Pfizer Inc",Domestic,Manufacturing,USD,"New York U.S.A",Healthcare
+MRK,2018-12-31,0.50,1.17,2.09,2.34,0.681,0.147,31.9,76.41,MRK,"Merck & Co Inc",Domestic,Manufacturing,USD,"New Jersey U.S.A",Healthcare
+MMM,2018-12-31,0.88,1.89,2.72,9.09,0.491,0.163,20.7,190.54,MMM,"3M Co",Domestic,Manufacturing,USD,"Minnesota U.S.A",Industrials
+KO,2018-12-31,0.36,1.05,3.78,1.51,0.631,0.202,31.3,47.35,KO,"Coca Cola Co",Domestic,Manufacturing,USD,"Georgia U.S.A","Consumer Defensive"
+JNJ,2018-12-31,0.53,1.47,1.56,5.70,0.668,0.188,22.3,127.27,JNJ,"Johnson & Johnson",Domestic,Manufacturing,USD,"New Jersey U.S.A",Healthcare
+INTC,2018-12-31,0.56,1.73,0.72,4.57,0.617,0.297,10.1,46.75,INTC,"Intel Corp",Domestic,Manufacturing,USD,"California U.S.A",Technology
+IBM,2018-12-31,0.65,1.29,6.34,9.57,0.464,0.110,11.8,113.67,IBM,"International Business Machines Corp",Domestic,Manufacturing,USD,"New York U.S.A",Technology
+GE,2018-12-31,0.37,NULL,8.32,-2.62,0.215,-0.187,-2.9,7.57,GE,"General Electric Co","Domestic Primary",Manufacturing,USD,"Massachusetts U.S.A",Industrials
+DD,2018-12-31,0.46,2.01,0.97,4.98,0.240,0.045,31.9,160.44,DD,"DuPont de Nemours Inc","Domestic Primary",Manufacturing,USD,"Michigan U.S.A","Basic Materials"
+CVX,2018-12-31,0.65,1.25,0.64,7.81,0.279,0.089,14.0,108.79,CVX,"Chevron Corp",Domestic,Manufacturing,USD,"California U.S.A",Energy
+CAT,2018-12-31,0.70,1.37,4.58,10.39,0.311,0.112,12.2,127.07,CAT,"Caterpillar Inc",Domestic,Manufacturing,USD,"Illinois U.S.A",Industrials
+AAPL,2018-12-31,0.71,1.13,2.41,12.01,0.383,0.224,18.3,225.74,AAPL,"Apple Inc",Domestic,Manufacturing,USD,"California U.S.A",Technology
