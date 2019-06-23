@@ -11,14 +11,18 @@ from flask_pymongo import PyMongo
 #################################################
 # Database Setup
 #################################################
+PEOPLE_FOLDER = os.path.join('static','js')
 app = Flask(__name__)
+
+app.config['UPLOAD_FOLDER'] = PEOPLE_FOLDER
 app.config["MONGO_URI"] = "mongodb://localhost:27017/company_db"
 mongo = PyMongo(app)
 
 @app.route("/")
 def index():
     """Return the homepage."""
-    return render_template("index.html")
+    full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'bright-chart-data-210607.jpg')
+    return render_template("index.html",user_image = full_filename)
 
 @app.route('/ticker', methods=['GET'])
 def get_all_ticker():
