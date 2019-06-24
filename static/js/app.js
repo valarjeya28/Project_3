@@ -1,3 +1,6 @@
+
+
+
 function buildMetadata(ticker) {
 
     // @TODO: Complete the following function that builds the metadata panel
@@ -59,10 +62,14 @@ function buildMetadata(ticker) {
       };
       var trace1 = [trace1];
       var layout = {
+        title:"Stock Price vs Year end ",
         showlegend: false,
         height: 600,
         width: 900
+        
       };
+
+      
       
        Plotly.newPlot('line', trace1, layout);
       // // @TODO: Build a Pie Chart
