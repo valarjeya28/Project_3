@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import json
 from flask import Flask
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template,send_from_directory
 from flask import Flask, jsonify, render_template
 from flask_pymongo import PyMongo
 
@@ -23,6 +23,10 @@ def index():
     """Return the homepage."""
     full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'bright-chart-data-210607.jpg')
     return render_template("index.html",user_image = full_filename)
+
+@app.route('/charts')
+def route1():
+    return render_template('charts.html')
 
 @app.route('/ticker', methods=['GET'])
 def get_all_ticker():
