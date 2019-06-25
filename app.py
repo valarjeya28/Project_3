@@ -8,6 +8,7 @@ from flask import Flask, request, render_template,send_from_directory
 from flask import Flask, jsonify, render_template
 from flask_pymongo import PyMongo
 
+
 #################################################
 # Database Setup
 #################################################
@@ -26,6 +27,8 @@ def index():
 
 @app.route('/charts')
 def route1():
+    # full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'bright-chart-data-210607.jpg')
+    # csvfile = os.path.join(os.path.dirname(__file__),'company_data4.csv')
     return render_template('charts.html')
 
 @app.route('/ticker', methods=['GET'])

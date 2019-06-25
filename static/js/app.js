@@ -65,7 +65,23 @@ function buildMetadata(ticker) {
         title:"Stock Price vs Year end ",
         showlegend: false,
         height: 600,
-        width: 900
+        width: 900,
+        xaxis: {
+          title: 'Year',
+          titlefont: {
+            family: 'Arial, sans-serif',
+            size: 18,
+            color: 'Black'
+          }
+        },
+        yaxis: {
+          title: 'Price',
+          titlefont: {
+            family: 'Arial, sans-serif',
+            size: 18,
+            color: 'Black'
+          }
+        }
         
       };
 
